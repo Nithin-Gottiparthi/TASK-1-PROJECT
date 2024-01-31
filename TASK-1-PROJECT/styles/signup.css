@@ -97,39 +97,3 @@ h2 {
 .search-bar {
     margin-left: 60px;
 }
-
-.password-input-container {
-    position: relative;
-    display: inline-block;
-}
-
-.eye-icon {
-    position: absolute;
-    top: 45%;
-    right: 10px;
-    transform: translateY(-50%);
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: 20px;
-    padding: 0;
-    opacity: 0.5;
-    /* Adjust the opacity as needed */
-    transition: opacity 0.3s ease-in-out;
-}
-
-.eye-icon.blink {
-    animation: blink 1s infinite;
-}
-
-@keyframes blink {
-
-    0%,
-    100% {
-        opacity: 0.5;
-    }
-
-    50% {
-        opacity: 1;
-    }
-}

@@ -24,17 +24,14 @@ app.post('/submit', async (req, res) => {
 
   try {
     // Connect to MongoDB
-    const client = await MongoClient.connect('mongodb+srv://nithin:nithin@signUpDetails.pagvt8r.mongodb.net/ecowave', {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
+    const client = await MongoClient.connect('mongodb://127.0.0.1:27017');
     const db = client.db('ecowave');
 
     // Hash the password
     const hashedPassword = await bcrypt.hash(password, 10);
 
     // Insert the form data into the collection with the hashed password
-    await db.collection('signupdetails').insertOne({
+    await db.collection('signUpDetails').insertOne({
       firstname,
       lastname,
       DOB,
@@ -68,14 +65,11 @@ app.post('/login', async (req, res) => {
 
   try {
     // Connect to MongoDB
-    const client = await MongoClient.connect('mongodb+srv://nithin:nithin@signupdetails.pagvt8r.mongodb.net/ecowave', {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
+    const client = await MongoClient.connect('mongodb://127.0.0.1:27017');
     const db = client.db('ecowave');
 
     // Find the user with the provided email
-    const user = await db.collection('signupdetails').findOne({ email });
+    const user = await db.collection('signUpDetails').findOne({ email });
     console.log('User from database:', user);
 
     if (user) {
@@ -118,14 +112,11 @@ app.post('/sendOTP', async (req, res) => {
 
   try {
     // Connect to MongoDB
-    const client = await MongoClient.connect('mongodb+srv://nithin:nithin@signupdetails.pagvt8r.mongodb.net/ecowave', {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
+    const client = await MongoClient.connect('mongodb://127.0.0.1:27017');
     const db = client.db('ecowave');
 
     // Store the generated OTP as a string in the database for the user
-    await db.collection('signupdetails').updateOne(
+    await db.collection('signUpDetails').updateOne(
       { email },
       { $set: { otp: generatedOTP.toString().trim() } }
     );
@@ -174,17 +165,14 @@ app.post('/resetPassword', async (req, res) => {
 
   try {
     // Connect to MongoDB
-    const client = await MongoClient.connect('mongodb+srv://nithin:nithin@signupdetails.pagvt8r.mongodb.net/ecowave', {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
+    const client = await MongoClient.connect('mongodb://127.0.0.1:27017');
     const db = client.db('ecowave');
 
     // Log the email variable
     console.log('Email variable:', email);
 
     // Find the user with the provided email and OTP
-    const user = await db.collection('signupdetails').findOne({ email, otp });
+    const user = await db.collection('signUpDetails').findOne({ email, otp });
 
     // Log the user object from the database
     console.log('User from database during password reset:', user);
@@ -194,13 +182,13 @@ app.post('/resetPassword', async (req, res) => {
       const hashedPassword = await bcrypt.hash(newPassword, 10);
 
       // Update the user's password in the database
-      await db.collection('signupdetails').updateOne(
+      await db.collection('signUpDetails').updateOne(
         { email },
         { $set: { password: hashedPassword } }
       );
 
       // Clear the OTP in the user document after successful password update
-      await db.collection('signupdetails').updateOne(
+      await db.collection('signUpDetails').updateOne(
         { email },
         { $unset: { otp: '' } }
       );
