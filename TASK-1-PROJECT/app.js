@@ -27,11 +27,8 @@ app.post('/submit', async (req, res) => {
 
   try {
     // Connect to MongoDB
-    const client = await MongoClient.connect(atlasConnectionString, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
-
+    const client = await MongoClient.connect(atlasConnectionString);
+    const db = client.db('ecowave');
     // Hash the password
     const hashedPassword = await bcrypt.hash(password, 10);
 
@@ -70,11 +67,8 @@ app.post('/login', async (req, res) => {
 
   try {
     // Connect to MongoDB
-    const client = await MongoClient.connect(atlasConnectionString, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
-
+    const client = await MongoClient.connect(atlasConnectionString);
+    const db = client.db('ecowave');
     // Find the user with the provided email
     const user = await db.collection('signUpDetails').findOne({ email });
     console.log('User from database:', user);
@@ -119,11 +113,8 @@ app.post('/sendOTP', async (req, res) => {
 
   try {
     // Connect to MongoDB
-    const client = await MongoClient.connect(atlasConnectionString, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });;
-
+    const client = await MongoClient.connect(atlasConnectionString);
+    const db = client.db('ecowave');
     // Store the generated OTP as a string in the database for the user
     await db.collection('signUpDetails').updateOne(
       { email },
@@ -174,11 +165,8 @@ app.post('/resetPassword', async (req, res) => {
 
   try {
     // Connect to MongoDB
-    const client = await MongoClient.connect(atlasConnectionString, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
-
+    const client = await MongoClient.connect(atlasConnectionString);
+    const db = client.db('ecowave');
     // Log the email variable
     console.log('Email variable:', email);
 
