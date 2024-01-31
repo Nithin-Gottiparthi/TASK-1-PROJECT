@@ -13,6 +13,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname));
 
+// MongoDB Atlas connection string
+const atlasConnectionString = 'mongodb+srv://admin:admin@ecowave.xtbetdt.mongodb.net/?retryWrites=true&w=majority';
+
 // Serve HTML signup form
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/Sign Up.html');
@@ -24,8 +27,10 @@ app.post('/submit', async (req, res) => {
 
   try {
     // Connect to MongoDB
-    const client = await MongoClient.connect('mongodb://127.0.0.1:27017');
-    const db = client.db('ecowave');
+    const client = await MongoClient.connect(atlasConnectionString, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
 
     // Hash the password
     const hashedPassword = await bcrypt.hash(password, 10);
@@ -65,8 +70,10 @@ app.post('/login', async (req, res) => {
 
   try {
     // Connect to MongoDB
-    const client = await MongoClient.connect('mongodb://127.0.0.1:27017');
-    const db = client.db('ecowave');
+    const client = await MongoClient.connect(atlasConnectionString, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
 
     // Find the user with the provided email
     const user = await db.collection('signUpDetails').findOne({ email });
@@ -112,8 +119,10 @@ app.post('/sendOTP', async (req, res) => {
 
   try {
     // Connect to MongoDB
-    const client = await MongoClient.connect('mongodb://127.0.0.1:27017');
-    const db = client.db('ecowave');
+    const client = await MongoClient.connect(atlasConnectionString, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });;
 
     // Store the generated OTP as a string in the database for the user
     await db.collection('signUpDetails').updateOne(
@@ -165,8 +174,10 @@ app.post('/resetPassword', async (req, res) => {
 
   try {
     // Connect to MongoDB
-    const client = await MongoClient.connect('mongodb://127.0.0.1:27017');
-    const db = client.db('ecowave');
+    const client = await MongoClient.connect(atlasConnectionString, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
 
     // Log the email variable
     console.log('Email variable:', email);
