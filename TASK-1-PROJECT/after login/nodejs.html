@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Node js</title>
+    <link rel="stylesheet" href="styles/fullstack.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>EcoWave Management </h1>
+    </header>
+
+    <nav>
+        <a href="/success.html">Home</a>
+        <a href="aboutus.html">About Us</a>
+        <a href="contact.html">Contact</a>
+        <a href="course.html">Course Offerings</a> 
+        <a href="/Login.html">Logout</a>
+        <input type="text" class="search-bar" placeholder="Search...">
+        <button class="search-button">Search</button>
+    </nav>
+    <main>
+        <section class="section">
+            <h2>NODE JS</h2>
+            <p>
+                A full-stack refers to the development of both the front-end (client-side) and back-end
+                (server-side) portions of a web application. A full-stack developer is proficient in working with
+                both the front-end and back-end technologies, allowing them to handle various aspects of web
+                development. </p>
+            
+            <!-- HTML list with hidden items -->
+            <ul>
+                <li onclick="toggleVisibility('item1')">
+                    <div class="clickable">SAMPLE</div>
+                    <div class="hidden" id="item1">Sample<br>
+                        <hr> Sample<br>
+                        <hr> Sample<br>
+                        <hr> Sample<br>
+                        <hr> Sample 
+                    </div>
+                </li>
+                <li onclick="toggleVisibility('item2')">
+                    <div class="clickable">SAMPLE</div>
+                    <div class="hidden" id="item2">Sample<br>
+                        <hr> Sample<br>
+                        <hr> Sample<br>
+                        <hr> Sample<br>
+                        <hr> Sample
+                    </div>
+                </li>
+                <li onclick="toggleVisibility('item3')">
+                    <div class="clickable">SAMPLE</div>
+                    <div class="hidden" id="item3">Sample<br>
+                        <hr> Sample<br>
+                        <hr> Sample<br>
+                        <hr> Sample<br>
+                        <hr> Sample
+                    </div>
+                </li>
+                <li onclick="toggleVisibility('item4')">
+                    <div class="clickable">SAMPLE</div>
+                    <div class="hidden" id="item4">Sample<br>
+                        <hr> Sample<br>
+                        <hr> Sample<br>
+                        <hr> Sample<br>
+                        <hr> Sample
+                    </div>
+                </li>
+                <li onclick="toggleVisibility('item5')">
+                    <div class="clickable">SAMPLE</div>
+                    <div class="hidden" id="item5">Sample<br>
+                        <hr> Sample<br>
+                        <hr> Sample<br>
+                        <hr> Sample<br>
+                        <hr> Sample
+                    </div>
+                </li>
+            </ul>
+
+        </section>
+    </main>
+
+
+    <footer>
+        <p>&copy; 2024 Ecowave Management System. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // JavaScript function to toggle visibility
+        function toggleVisibility(itemId) {
+            var items = document.querySelectorAll('.hidden');
+
+            items.forEach(function (item) {
+                if (item.id === itemId) {
+                    // Toggle the visibility class of the selected item
+                    item.classList.toggle('visible');
+                } else {
+                    // Collapse other items
+                    item.classList.remove('visible');
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>
