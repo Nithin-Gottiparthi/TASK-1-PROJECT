@@ -4,8 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-store" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
     <title>EcoWave - Contact Us</title>
     <link rel="stylesheet" href="styles/contact.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 
 <body>
@@ -14,17 +18,33 @@
         <h1>EcoWave Management</h1>
     </header>
 
-    <nav>
-        <a href="/success.html">Home</a>
-        <a href="aboutus.html">About Us</a>
-        <a href="contact.html">Contact</a>
-        <a href="course.html">Course Offerings</a> 
-        <a href="/Login.html">Logout</a>
-        <input type="character" class="search-bar" placeholder="Search...">
-        <button class="search-button">Search</button>
+    <nav class="navbar navbar-expand-lg navbar-light ">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/success.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="aboutus.html">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="contact.html">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="course.html">Course Offerings</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/Login.html">Logout</a>
+                </li>
+            </ul>
+        </div>
     </nav>
 
-    <main>
+    <main class="content">
         <section>
             <h2>Contact Us</h2>
             <form>
@@ -48,6 +68,10 @@
     <footer>
         <p>&copy; 2024 Ecowave Management. All rights reserved.</p>
     </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.8/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 </body>
 
