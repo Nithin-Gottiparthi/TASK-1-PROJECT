@@ -104,3 +104,11 @@ footer {
 .search-bar {
     margin-left: 60px;
 }
+
+.nav-link {
+    color: white !important;
+}
+
+.nav-item {
+    margin-right: 125px;
+}
