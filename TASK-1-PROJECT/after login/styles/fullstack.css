@@ -139,3 +139,11 @@ li {
   /* Set a value large enough to accommodate your content */
   opacity: 1;
 }
+
+.nav-link {
+  color: white !important;
+}
+
+.nav-item {
+  margin-right: 80px;
+}
