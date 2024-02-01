@@ -47,6 +47,9 @@ section {
     width: 80%;
     max-width: 600px;
 }
+.content{
+    display: flex;
+}
 
 h2 {
     color: #009688;
@@ -99,4 +102,12 @@ footer {
 
 .search-bar {
     margin-left: 60px;
+}
+
+.nav-link {
+    color: white !important;
+}
+
+.nav-item {
+    margin-right: 125px;
 }
