@@ -4,8 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Backend Development</title>
+    <title>Java</title>
     <link rel="stylesheet" href="styles/fullstack.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 
 <body>
@@ -14,18 +15,34 @@
         <h1>EcoWave Management </h1>
     </header>
 
-    <nav>
-        <a href="/success.html">Home</a>
-        <a href="aboutus.html">About Us</a>
-        <a href="contact.html">Contact</a>
-        <a href="course.html">Course Offerings</a> 
-        <a href="/Login.html">Logout</a>
-        <input type="text" class="search-bar" placeholder="Search...">
-        <button class="search-button">Search</button>
+    <nav class="navbar navbar-expand-lg navbar-light ">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/success.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="aboutus.html">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="contact.html">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="course.html">Course Offerings</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/Login.html">Logout</a>
+                </li>
+            </ul>
+        </div>
     </nav>
     <main>
         <section class="section">
-            <h2>BACKEND DEVELOPMENT</h2>
+            <h2>JAVA</h2>
             <p>
                 A full-stack refers to the development of both the front-end (client-side) and back-end
                 (server-side) portions of a web application. A full-stack developer is proficient in working with
@@ -40,7 +57,7 @@
                         <hr> Sample<br>
                         <hr> Sample<br>
                         <hr> Sample<br>
-                        <hr> Sample 
+                        <hr> Sample
                     </div>
                 </li>
                 <li onclick="toggleVisibility('item2')">
@@ -88,7 +105,6 @@
     <footer>
         <p>&copy; 2024 Ecowave Management System. All rights reserved.</p>
     </footer>
-
     <script>
         // JavaScript function to toggle visibility
         function toggleVisibility(itemId) {
@@ -105,7 +121,10 @@
             });
         }
     </script>
- 
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.8/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 
 </html>
