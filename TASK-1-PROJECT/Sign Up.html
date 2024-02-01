@@ -4,19 +4,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-store" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
     <title>EcoWave - Signup</title>
     <link rel="stylesheet" type="text/css" href="styles/signup.css">
-
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script>
-        function validatePassword() {
+        function validateForm() {
+            // Validate First Name and Last Name
+            var firstName = document.getElementById("firstname").value;
+            var lastName = document.getElementById("lastname").value;
+            var nameRegex = /^[a-zA-Z]+$/;
+
+            if (!nameRegex.test(firstName) || !nameRegex.test(lastName)) {
+                alert("First name and last name should not contain numbers.");
+                return false;
+            }
+
+            // Validate Date of Birth
+            var dob = new Date(document.getElementById("DOB").value);
+            var currentDate = new Date();
+            var age = currentDate.getFullYear() - dob.getFullYear();
+
+            if (age < 18) {
+                alert("You must be 18 years or older to sign up.");
+                return false;
+            }
+
+            // Validate Email
+            var email = document.getElementById("email").value;
+
+            if (!email.endsWith("@gmail.com")) {
+                alert("Email must be a Gmail address.");
+                return false;
+            }
+
+            // Validate Mobile Number
+            var mobileNumber = document.getElementById("mobileNumber").value;
+
+            if (mobileNumber.length !== 10 || !/^[6789]/.test(mobileNumber)) {
+                alert("Mobile number should be 10 digits and start with 6, 7, 8, or 9.");
+                return false;
+            }
+
+            // Validate Password
             var password = document.getElementById("password").value;
             var confirmPassword = document.getElementById("confirmPassword").value;
+
+            if (password.length < 8) {
+                alert("Password should be at least 8 characters long.");
+                return false;
+            }
 
             if (password !== confirmPassword) {
                 alert("Passwords do not match");
                 return false;
             }
+
             return true;
+        }
+        function togglePasswordVisibility(inputId) {
+            var passwordInput = document.getElementById(inputId);
+            var eyeIcon = document.querySelector('#' + inputId + ' + .eye-icon');
+
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+            } else {
+                passwordInput.type = "password";
+            }
+
+            // Add blinking effect
+            eyeIcon.classList.add('blink');
+            setTimeout(() => eyeIcon.classList.remove('blink'), 1000);
         }
     </script>
 </head>
@@ -27,29 +87,47 @@
         <h1>EcoWave Management</h1>
     </header>
 
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="Sign Up.html">Sign up</a>
-        <a href="Login.html">Login</a>
-        <a href="aboutus.html">About Us</a>
-        <a href="#">Products</a>
-        <a href="contact.html">Contact</a>
-        <a href="course.html">Course Offerings</a>
-        <input type="character" class="search-bar" placeholder="Search...">
-        <button class="search-button">Search</button>
+    <nav class="navbar navbar-expand-lg navbar-light ">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="Sign Up.html">Sign up</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="login.html">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="aboutus.html">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="contact.html">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="course.html">Course Offerings</a>
+                </li>
+            </ul>
+        </div>
     </nav>
+
 
     <main>
         <h2>SIGN UP</h2>
-        <form onsubmit="return validatePassword();" action="/submit" method="post">
+        <form onsubmit="return validateForm();" action="/submit" method="post">
             <label for="firstname">First Name:</label>
-            <input type="text" id="firstname" name="firstname" required>
+            <input type="text" id="firstname" name="firstname" placeholder="Enter your first name" required>
 
             <label for="lastname">Last Name:</label>
-            <input type="text" id="lastname" name="lastname" required>
+            <input type="text" id="lastname" name="lastname" placeholder="Enter your last name" required>
 
             <label for="DOB">Date of Birth:</label>
-            <input type="date" id="DOB" name="DOB" required>
+            <input type="date" id="DOB" name="DOB" placeholder="Select your date of birth" required>
 
             <label>Gender:</label>
             <div>
@@ -67,16 +145,24 @@
             </div>
 
             <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
 
             <label for="mobileNumber">Mobile Number:</label>
-            <input type="number" id="mobileNumber" name="mobileNumber" required>
+            <input type="number" id="mobileNumber" name="mobileNumber" placeholder="Enter your mobile number" required>
 
             <label for="password">Create Password:</label>
-            <input type="password" id="password" name="password" required>
+            <div class="password-input-container">
+                <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                <button type="button" class="eye-icon" onclick="togglePasswordVisibility('password')">👁️</button>
+            </div>
 
             <label for="confirmPassword">Confirm Password:</label>
-            <input type="password" id="confirmPassword" name="confirmPassword" required>
+            <div class="password-input-container">
+                <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm your password"
+                    required>
+                <button type="button" class="eye-icon"
+                    onclick="togglePasswordVisibility('confirmPassword')">👁️</button>
+            </div>
 
             <input type="submit" value="Sign Up">
         </form>
@@ -84,6 +170,10 @@
     <footer>
         <p>&copy; 2024 Ecowave Management System. All rights reserved.</p>
     </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.8/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 
 </html>
